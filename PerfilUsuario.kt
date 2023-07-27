@@ -10,6 +10,8 @@ class PerfilUsuario {
     var Hobbies: String? = ""
     var hobbies: MutableList<Hobby> = mutableListOf()
 
+
+
     constructor(ID: Int?, Nombres: String?, Apellidos: String?, UrlPhoto: String?, Edad: Int? = 0, Correo: String?, Biografía: String?, Estado: String?, Hobbies: String?){
         this.ID = ID
         this.Nombres = Nombres
