@@ -5,6 +5,16 @@ fun main() {
     * Correo: rey22992@uvg.edu.gt
     * Fecha: 26/07/2023
     * */
+    //----------------Inicalización del Array----------------
+    val myArrayList = ArrayList<String>()
+    myArrayList.add("Brandon")
+    myArrayList.add("Java")
+    myArrayList.add("SQL")
+    myArrayList.add("Kotlin")
+    //-------------------------------------------------------
+
+
+
     var ID: Int? = 0;
     var Nombres: String? = ""
     var Apellidos: String? = ""
@@ -13,22 +23,20 @@ fun main() {
     var Correo: String? = ""
     var Biografía: String? = ""
     var Estado: String? = ""
-    var Hobbies: String? = ""
+    var Hobbies:String? = "" //MutableList<Hobby> = mutableListOf()
     var Perfil: MutableList<Hobby> = mutableListOf()
-    var ListadoPersonas = mutableListOf<PerfilUsuario>()
+    var ListadoPersonas = mutableListOf<PerfilUsuario>(
+        PerfilUsuario(1, "Juan", "Perez", "www.Juan.com", 30, "juan@example.com", "Nacio en Estados Unidos", "Activo",null),
+        PerfilUsuario(2, "Loncho", "Peludo", "www.Loncho.com", 24, "Loncho@example.com", "Nacio en Jamaica", "Activo",null),
+        PerfilUsuario(3, "Oveja", "Peluda", "www.Oveja.com", 5, "Oveja@example.com", "Nacio en Mexico", "Activo",null),
+        PerfilUsuario(4, "Brandon", "Reyes", "www.Brando.com", 30, "juan@example.com", "Nacio en Guamtela", "Activo",null),
+    )
+
     var op: String? = ""
 
     //-----------PERFILES PRECARGADOS
-    /**
-        val perfilesPrecargados = mutableListOf(
-        PerfilUsuario(
-            1, "Juan", "Perez", null, 30, "juan@example.com", null, "Activo"
-        ),
-        PerfilUsuario(
-            2, "María", "López", null, 25, "maria@example.com", null, "Inactivo"
-        )
-    )
-     */
+
+
     //-----------
     println("Bienvenido al Programa de Brandon Reyes 0609")
     println("Por favor, ingrese la opción:")
@@ -36,11 +44,12 @@ fun main() {
     println("2) Buscar Perfil")
     println("3) Eliminar perfil")
     println("4) Agregar Hobbie")
+    println("5) Cerrar el programa")
 
     op = (readLine())
     println("->Selecciono la opción: $op")
 
-    while(op != "4"){
+    while(op != "5"){
 
         if(op == "1") {
             //Opción  de crear ususario
@@ -116,19 +125,22 @@ fun main() {
 
             var search = (readLine())
             println("->Se busca: $search")
+
             while(j <= largoLista){
                 var datoID = ListadoPersonas[j].ID
                 var datoNombres = ListadoPersonas[j].Nombres
                 var datoApellidos = ListadoPersonas[j].Apellidos
-                if(search === datoID.toString() ){
+                if(search.equals( datoID.toString()) ){
                     println("Se encontro el dato: $search")
                     println(ListadoPersonas[j])
 
-                }else if(search === datoNombres){
+                }
+                if(search.equals( datoNombres)){
                     println("Se encontro el dato: $search")
                     println(ListadoPersonas[j])
 
-                }else if(search===datoApellidos ){
+                }
+                if(search.equals(datoApellidos) ){
                     println("Se encontro el dato: $search")
                     println(ListadoPersonas[j])
                 }
@@ -162,10 +174,26 @@ fun main() {
                 println("Entrada inválida. Ingrese un valor numérico para el ID.")
             }
 
-
+        }else if(op == "5") {
+            println("Cerro el programa")
+            break
 
         }else if(op == "4") {
-            break
+            println("------------------------------------")
+            println("Selecciono Agregar Hobbie")
+            println("------------------------------------")
+            println("Listado de las personas ingresadas")
+            var k: Int = 0;
+            var largoLista = ListadoPersonas.size - 1
+            while(k <= largoLista){
+                var datoID = ListadoPersonas[k].ID
+                var datoNombres = ListadoPersonas[k].Nombres
+                var datoApellidos = ListadoPersonas[k].Apellidos
+                println("No.$k: ID: $datoID Nombres: $datoNombres Apellidos: $datoApellidos")
+                k++
+            }
+
+
         }
         println("Por favor, ingrese la opción:")
         println("1) Crear usario")
